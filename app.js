@@ -18,7 +18,7 @@ var app = express();
 
 // Configuramos la conexión con nuestra BBDD
 //var mongoDB = 'mongodb://127.0.0.1:27017/fct';
-var mongoDB = 'mongodb://supuestousuario:aHTKEzDro2KWQyIG@cluster0.7b3vl.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
+var mongoDB = '//supuestousuario:aHTKEzDro2KWQyIG@cluster0.7b3vl.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
 mongoose.connect(mongoDB,{useUnifiedTopology:true,useNewUrlParser:true,useFindAndModify:false,useCreateIndex: true});
 mongoose.Promise = global.Promise;
 var db = mongoose.connection;
