@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listado de Personal</title>
+    <link rel="stylesheet" type="text/css" href="stylesheets/personal.css">
+</head>
+<body>
+    {% include "encabezado.html" %}
+    <div class="cuerpo"> 
+        <div class="izquierdo">
+            <div class="titulo1"><h2>Listado de Personal</h2></div>
+            <div class="cabecerag">
+                <div class="linea_de_titulos">Foto</div>
+                <div class="linea_de_titulos">Código</div>
+                <div class="linea_de_titulos">DNI</div>
+                <div class="linea_de_titulos">Apellidos</div>
+                <div class="linea_de_titulos">Nombre</div>
+                <div class="linea_de_titulos">Sexo</div>
+                <div class="linea_de_titulos">Calle</div>
+                <div class="linea_de_titulos">Número</div>
+                <div class="linea_de_titulos">Piso</div>
+                <div class="linea_de_titulos">Puerta</div>
+                <div class="linea_de_titulos">Correo</div>
+                <div class="linea_de_titulos">Tfno.</div>
+            </div>
+            <div id="registros">
+                    {% if personal is not empty %}
+                        {% for persona in personal %}
+                            <div  class="salto" id="salto" onclick="location.href='/personal/show/{{persona._id}}'">
+                                <div class="elemento"><img class="icono" src="{{'/images/' ~ persona.codigo ~ ".jpeg"}}" alt=""></div>
+                                <div class="elemento">{{persona.codigo}}</div>
+                                <div class="elemento">{{persona.dni}}</div>
+                                <div class="elemento">{{persona.apellidos}}</div>
+                                <div class="elemento">{{persona.nombre}}</div>
+                                {% if not persona.sexo  %}
+                                    <div class="elemento">Hombre</div>
+                                {% else %}
+                                    <div class="elemento">Mujer</div>
+                                {% endif %}
+                                <div class="elemento">{{persona.calle}}</div>
+                                <div class="elemento">{{persona.nro}}</div>
+                                <div class="elemento">{{persona.piso}}</div>
+                                <div class="elemento">{{persona.puerta}}</div>
+                                <div class="elemento">{{persona.correo}}</div>
+                                <div class="elemento">{{persona.telefono}}</div>
+                            </div>                   
+                        {% endfor %}
+                        {% else %}
+                        <div>No hay Personal</div>
+                    {% endif %}
+            </div>
+        </div>
+    </div>
+
+    {% include "pie.html" %}
+
+</body>
+</html>

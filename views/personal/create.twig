@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<style>
+* {
+    margin:0;
+    padding:0;
+}
+body {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: hsl(200 50% 20%);
+    background-color: #feffff;
+}
+.cabecerax{
+    margin-top: 4rem;
+    width:65vw;
+    height: 3rem;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    color: whitesmoke;
+    background-color: #001f3f;
+    box-shadow: 10px 10px 19px -13px rgba(23,23,23,1);
+}
+.cuerpo {
+    width:65vw;
+    height: 47vh;
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background-color:  #dfdfe0;
+    box-shadow: 10px 10px 19px -13px rgba(23,23,23,1);
+}
+.folio{
+    width: 100%;
+    display:flex;
+    flex-direction: row;
+
+}
+.izquierda {
+    width: 35%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color:  #dfdfe0;
+}
+.centro {
+    width: 45%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    background-color: whitesmoke;
+    z-index: 2;
+}
+.derecha {
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color:  #dfdfe0;
+}
+.foto {
+    width: 19.3rem;
+    height: 19.3rem;
+}
+.listado {
+    display: grid;
+    grid-template-columns: 3fr 3fr ;
+    grid-gap: 2px;
+    padding: 2px;
+    box-shadow: 10px 10px 19px -13px rgba(23,23,23,1);
+}
+.elemento , .linea_de_titulos{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    padding: 3px 0;
+    font-size: 14px;
+    color: rgb(92, 94, 122);
+    background-color: #dfdfe0;
+}
+.linea_de_titulos{
+    background-color: #001f3f;
+    color: whitesmoke;
+    padding:5px;
+}
+.boton {
+	box-shadow:inset 0px 1px 0px 0px #ffffff;
+	background-color: #dfdfe0;
+	border-radius:6px;
+	border:1px solid #bebcbc;
+	display:inline-block;
+	cursor:pointer;
+	color:#777777;
+	font-family:Verdana;
+	font-size:15px;
+    font-weight:bold;
+	padding:6px 24px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #ffffff;
+}
+.boton:hover , #boton1:hover  {
+    background-color:#49c461;
+    color:  #dfdfe0;
+}
+.boton:active {
+	position:relative;
+	top:1px;
+}
+
+#boton1  {
+    margin-top:1rem;
+	box-shadow:inset 0px 1px 0px 0px #ffffff;
+	background-color: #dfdfe0;
+	border-radius:6px;
+	border:1px solid #bebcbc;
+    cursor: pointer;
+	color:#777777;
+	font-family:Verdana;
+	font-size:15px;
+    font-weight:bold;
+	padding:6px 24px;
+	text-decoration:none;
+    text-shadow:0px 1px 0px #ffffff;
+    text-align: center;
+}
+
+
+#texto {
+        color:whitesmoke;
+        cursor: pointer;
+        font-size: 1.2em;
+    }
+
+.fotox {
+        cursor: pointer;
+        position: relative;
+        top: -1rem;
+        left: 0px;
+        right: 0px;
+        bottom: 0px;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+    }
+
+</style>
+</head>
+<body>
+    {% include "encabezado.html" %}
+    <div class="cabecerax">
+        <div class="caja">
+            <h2>Añadir ficha Empleado</h2>
+        </div>
+    </div>
+    <div class="cuerpo">
+        <form action="/personal/save" enctype='multipart/form-data' method="POST">
+            <div class="folio">
+                <div class="izquierda">
+                    <img class="foto" src="{{'/images/' ~ personal.codigo ~ ".jpeg"}}" alt="">
+                    <div class="boton1">
+                        <p id="boton1">Cambiar Imagen</p>
+                        <input type="file" id="foto" class="fotox" name="foto" accept="image/jpeg" onchange="cargafoto()" >
+                        <script>
+                            function cargafoto() {
+                                document.getElementById('imagen').src = window.URL.createObjectURL(document.getElementById('foto').files[0]);
+                                }
+                        </script>
+                    </div>
+                </div>       
+                <div class="centro">
+                        <div class="listado">
+                            <div class="linea_de_titulos">Código</div>
+                            <input class="elemento" type="text" name="codigo" value="{{personal.codigo}}">
+                            <div class="linea_de_titulos">DNI</div>
+                            <input class="elemento" type="text" name="dni" value="{{personal.dni}}">
+                            <div class="linea_de_titulos">Nombre</div>
+                            <input class="elemento" type="text" name="nombre" value="{{personal.nombre}}">
+                            <div class="linea_de_titulos">Apellidos</div>
+                            <input class="elemento" type="text" name="apellidos" value="{{personal.apellidos}}">
+                            <div class="linea_de_titulos">Sexo</div>
+                            <select class="elemento" name="Csexo" id="Csexo">      
+                                {% if personal.sexo == false %}
+                                    <option value = "0" selected>Hombre</option>
+                                    <option value = "1">Mujer</option>
+                                {% else %}
+                                    <option value = "0" >Hombre</option>
+                                    <option value = "1" selected>Mujer</option>
+                                {% endif %}
+                            </select>
+                            <div class="linea_de_titulos">Calle</div>
+                            <input class="elemento" type="text" name="calle" value="{{personal.calle}}">
+                            <div class="linea_de_titulos">Número</div>
+                            <input class="elemento" type="number" name="nro" value="{{personal.nro}}">
+                            <div class="linea_de_titulos">Piso</div>
+                            <input class="elemento" type="text" name="piso" value="{{personal.piso}}">
+                            <div class="linea_de_titulos">Puerta</div>
+                            <input class="elemento" type="text" name="puerta" value="{{personal.puerta}}">
+                            <div class="linea_de_titulos">Correo</div>
+                            <input class="elemento" type="text" name="correo" value="{{personal.correo}}">
+                            <div class="linea_de_titulos">Tfno.</div>
+                            <input class="elemento" type="text" name="telefono" value="{{personal.telefono}}">
+                        </div>
+                        {% if problema is defined  %}
+
+                        <h4>{{problema}}</h4>
+
+                        {% endif %}
+                </div>
+                <div class="derecha">
+                    <button class="boton" type="submit">Grabar</button>
+                    <button class="boton" type="reset">Cancelar</button>
+                    <a class="boton" href="/personal">Listado</a>
+                </div>
+            </div>
+    </form>
+    </div>
+    {% include "pie.html" %}
+</body>
+</html>

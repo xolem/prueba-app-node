@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="utf-8">
+	<title>Cabecera fija</title>
+	<style>
+		/* Encabezado */
+	header {
+			margin:0;
+			padding:0;
+			background: rgba(0,32,63,1);
+			background: -webkit-linear-gradient(top, rgba(0,32,63,1) 0%, rgba(0,10,20,1) 100%);
+			background: linear-gradient(to bottom, rgba(0,32,63,1) 0%, rgba(0,10,20,1) 100%);
+			color: white;
+			height: 10vh;
+			width : 100%;
+			box-shadow: 10px 10px 19px -13px rgba(23,23,23,1);
+		}	
+		header a {
+			color: white;
+		}
+		/*
+		* Logo
+		*/
+		#logo-imagen {
+			float: left;
+			padding: 15px 0 0 10px;
+		}
+
+		#logo-empresa {
+			float: left;
+			padding: 35px 0 0 5px;
+			text-align: center;
+			text-decoration: none;
+		}
+		#logo-empresa:hover {
+			color: #0b76a6;
+		}
+
+		#logo-empresa .nombre {
+			display: block;
+			font-weight: 600;
+			font-size: 1.2em;
+		}
+
+		#logo-empresa .descripcion {
+			display: block;
+			font-weight: 300;
+			font-size: 0.8em;
+		}
+			
+
+		/*
+		* Navegación
+		*/
+		nav {
+			float: right;
+		}
+			nav ul {
+				margin: 0;
+				padding: 0;
+				list-style: none;
+				padding-right: 20px;
+			}
+			
+			nav ul li {
+				display: inline-block;
+				line-height: 80px;
+			}
+				
+			nav ul li a {
+				display: block;
+				padding: 0 10px;
+				text-decoration: none;
+			}
+			
+			nav ul li a:hover {
+				background:  rgb(173, 75, 75);
+			}
+	</style>
+</head>
+<body>
+	<header>
+	    <!--<img id="logo-imagen" src="/images/logos/kfclogo.png" alt="Logo" id="logo" />-->
+		<a id="logo-empresa" href="#">
+			<span class="nombre">FLC</span>
+			<span class="descripcion">Integra</span>
+		</a> <!-- / #logo-header -->
+
+		<nav>
+			<ul>
+				<li><a href="index.php">Inicio</a></li>
+				<li><a href="Mantarticulos.php">Personal</a></li>
+				<li><a href="#">Contacto</a></li>
+			</ul>
+		</nav><!-- / nav -->
+
+	</header>
+</body>
+</html>
