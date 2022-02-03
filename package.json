@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
+    "´dev": "node ./bin/www",
     "start": "node ./bin/www"
   },
   "dependencies": {
@@ -19,5 +20,9 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.4"
-  }
+  },
+  "description": "super sencillo",
+  "main": "app.js",
+  "author": "",
+  "license": "ISC"
 }

@@ -17,3 +17,4 @@ router.post('/save',upload.single('foto'),persona.save);
 router.get('/edit/:id',persona.edit);
 router.post('/update/:id',upload.single('foto'),persona.update);
  
+module.exports = router;
